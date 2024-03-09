@@ -39,8 +39,10 @@ ggplot(dfSmall,aes(x=value,y=weather,colour=office_type))+geom_jitter()+scale_co
 ```
 
 ###for Task3_2
+###The Office Size effects the total energy consumption.this is the most significant impact.
 ```{r Lab02_3,echo=TRUE}
-dfSum <- df
+
+df %>% filter(description=='Total Cosumption [GJ]') %>% ggplot(aes(x=value,y=weather,colour=office_type,shape=office_size))+geom_jitter()+scale_colour_viridis_d()
 
 ```
 
