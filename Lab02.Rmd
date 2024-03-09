@@ -1,0 +1,55 @@
+---
+title: "lab2Markdown"
+author: "Xiaodong Guo"
+date: "2024-03-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+##Lab02 Assignment
+```{r Lab02_1,echo=TRUE}
+#tidy the dataset
+
+source('./lab2ScriptR.R')
+df <- sort_data()
+#knitr::kable(head(df,20))
+
+```
+
+###for Task3_1
+###The peak load are differed by the weather with the relations showed in the plot.
+###The Pattern doesn't vary by office type.
+```{r Lab02_2,echo=TRUE}
+#get dataset for TASK3_1
+dfSmall <- df %>% filter( group=='sensible_cooling' & description=='Outdoor Temperature at Peak Load [C]') %>% arrange(weather)
+#knitr::kable(dfSmall)
+
+
+ggplot(dfSmall,aes(x=value,y=weather,colour=office_type))+geom_jitter()+scale_colour_viridis_d()+facet_grid(~office_size);
+
+```
+
+###for Task3_2
+```{r Lab02_3,echo=TRUE}
+dfSum <- df
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
