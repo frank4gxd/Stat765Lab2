@@ -24,10 +24,12 @@ df <- sort_data()
 #knitr::kable(head(df,20))
 
 ```
+<span style="color:red;">
+#for Task3_1
 
-###for Task3_1
-###The peak load are differed by the weather with the relations showed in the plot.
-###The Pattern doesn't vary by office type.
+  The peak load are differed by the weather with the relations showed in the plot.
+  The Pattern doesn't vary by office type.
+</span>
 ```{r Lab02_2,echo=TRUE}
 #get dataset for TASK3_1
 dfSmall <- df %>% filter( group=='sensible_cooling' & description=='Outdoor Temperature at Peak Load [C]') %>% arrange(weather)
@@ -37,9 +39,12 @@ dfSmall <- df %>% filter( group=='sensible_cooling' & description=='Outdoor Temp
 ggplot(dfSmall,aes(x=value,y=weather,colour=office_type))+geom_jitter()+scale_colour_viridis_d()+facet_grid(~office_size);
 
 ```
+<span style='color:red;">
+#for Task3_2
 
-###for Task3_2
-###The Office Size effects the total energy consumption.this is the most significant impact.
+
+The Office Size effects the total energy consumption.this is the most significant impact.
+</span>
 ```{r Lab02_3,echo=TRUE}
 
 df %>% filter(description=='Total Cosumption [GJ]') %>% ggplot(aes(x=value,y=weather,colour=office_type,shape=office_size))+geom_jitter()+scale_colour_viridis_d()
